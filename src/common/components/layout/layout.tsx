@@ -3,12 +3,11 @@ import {Outlet} from 'react-router-dom';
 
 import {setIsMenuOpenAC} from '../../../app/app-reducer';
 import {MainContent, MainWrap} from '../../../pages/main/main-style';
-import {Container, Preloader, Wrapper} from '../../../styled/styled-wpapper';
+import {Container, Wrapper} from '../../../styled/styled-wpapper';
 import {useAppDispatch} from '../../hooks/hooks';
 import {Footer} from '../footer';
 import {Header} from '../header';
 import {ScrollToTop} from '../scroll-to-top';
-import preloader from "../../../assets/img/preloader/preloader.gif";
 
 
 export const Layout = () => {
@@ -17,6 +16,7 @@ export const Layout = () => {
     const onClickCloseHandler = () => {
         dispatch(setIsMenuOpenAC({value: false}))
     }
+
 
     return (
         <React.Fragment>

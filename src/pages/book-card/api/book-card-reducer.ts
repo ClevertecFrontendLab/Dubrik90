@@ -1,9 +1,10 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-
 import {AxiosError} from 'axios';
-import {AppThunk} from '../../../../app/store';
-import {booksAPI, CardResType, CardType} from './book-card-api';
-import {setAppStatusAC} from '../../../../app/app-reducer';
+
+import {setAppStatusAC} from '../../../app/app-reducer';
+import {AppThunk} from '../../../app/store';
+import {booksAPI, CardResType, CardType} from '../../book-page/api/book-page-api';
+
 
 const initialState: CardType = {
     id: 0,
@@ -44,7 +45,6 @@ const initialState: CardType = {
     histories: null
 }
 
-
 const slice = createSlice({
     name: 'card',
     initialState,
@@ -55,24 +55,31 @@ const slice = createSlice({
     }
 })
 
+export const {setCardAC} = slice.actions
 
 export const getCardTC = (idBook?: string): AppThunk => async (dispatch) => {
     dispatch(setAppStatusAC({status: 'loading'}))
     try {
         const id = idBook ? idBook : '';
         const res = await booksAPI.getCard(id)
-        console.log(res.data)
-        // eslint-disable-next-line @typescript-eslint/no-use-before-define
-        dispatch(setCardAC(res.data))
 
+        dispatch(setCardAC(res.data))
+        dispatch(setAppStatusAC({status: 'idle'}))
     } catch (e) {
         const err = e as Error | AxiosError
-        alert(err)
-    } finally {
-        dispatch(setAppStatusAC({status: 'idle'}))
-       // dispatch(getCardsAC({initialize: true}))
+
+        dispatch(setAppStatusAC({status: 'error'}))
     }
 }
 
 export const cardReducer = slice.reducer
-export const {setCardAC} = slice.actions
+
+type ErrorResType = {
+    data: null;
+    error: {
+        status: number;
+        name: string;
+        message: string;
+        details: object
+    }
+}
