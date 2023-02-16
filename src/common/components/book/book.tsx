@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 
 import arrowReviews from '../../../assets/img/action/arrow-reviews.svg';
 import ellipse from '../../../assets/img/Ellipse.png';
+import {CommentsType} from '../../../pages/book-page/api/book-page-api';
 import {
     AboutBlock,
     BookButton,
@@ -23,7 +24,6 @@ import {Container} from '../../../styled/styled-wpapper';
 import {useAppSelector} from '../../hooks/hooks';
 import {Raring} from '../rating/raring';
 import {SwiperSlider} from '../swiper/slider-swiper';
-import {CommentsType} from "../../../pages/book-page/api/book-page-api";
 
 export const Book = () => {
     const book = useAppSelector(state => state.card)

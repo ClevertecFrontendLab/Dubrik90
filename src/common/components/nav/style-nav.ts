@@ -20,7 +20,6 @@ export const StyledNavMenu = styled.nav<StyledNavMenuPropsType>`
     @media (max-width: 840px) {
         display: none;
         position: absolute;
-        // top: 150px;
         height: 80vh;
         min-width: 365px;
         left: ${({isMenuOpen}) => isMenuOpen ? '0' : '-100%'};

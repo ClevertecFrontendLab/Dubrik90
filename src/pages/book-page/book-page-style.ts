@@ -24,29 +24,12 @@ export const Category = styled.div`
 export const BookName = styled.div`
 `
 export const BooksAbout = styled.div`
-
     display: flex;
     column-gap: 30px;
     margin-bottom: 42px;
     @media (max-width: 520px) {
         flex-direction: column;
     }
-    // display: grid;
-    //grid-template-columns: 494px 1fr;
-
-    //
-    //    grid-template-columns: 300px 1fr;
-    //}
-    // column-gap: 30px;
-    // flex-direction: column;
-    // max-width: 445px;
-    // row-gap: 16px;
-
-    // min-width: 0;
-    // @media (max-width: 496px) {
-    //     flex-direction: column;
-    //     align-items: center;
-    // }
 `;
 export const BockImage = styled.div`
     flex: 0 0 445px;
@@ -336,7 +319,6 @@ export const SwiperWrapper = styled.div`
     .swiper {
         width: 100%;
         height: 100%;
-        // max-height: 594px;
     }
 
     .swiper-slide img {
@@ -346,18 +328,7 @@ export const SwiperWrapper = styled.div`
         object-position: center;
     }
 
-    // .swiper {
-    ////     width: 100%;
-    // }
-
-    //.swiper-slide {
-    //    height: 100%;
-    //    overflow: hidden;
-    //    background-size: cover;
-    //    background-position: center;
-    //}
-
-    .mySwiper2 {
+   .mySwiper2 {
         height: 80%;
         width: 100%;
         margin-bottom: 20px;
@@ -475,10 +446,6 @@ export const SwiperWrapper = styled.div`
         border: 4px solid var(--swiper-preloader-color, var(--swiper-theme-color));
         border-radius: 50%;
         border-top-color: transparent
-    }
-
-    .swiper-watch-progress .swiper-slide-visible .swiper-lazy-preloader, .swiper:not(.swiper-watch-progress) .swiper-lazy-preloader, swiper-container:not(.swiper-watch-progress) .swiper-lazy-preloader {
-        //  animation: swiper-preloader-spin 1s infinite linear
     }
 
     .swiper-lazy-preloader-white {

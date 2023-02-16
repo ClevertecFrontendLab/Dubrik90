@@ -8,6 +8,7 @@ import {useBodyScrollLock} from '../../hooks/use-body-scroll-lock';
 import {MenuItem, MenuList} from '../nav/style-nav';
 
 import {StyledBurgerMenu} from './burger-style';
+import {ALL, RULES, TREATY} from "../../../app/routs";
 
 export const BurgerMenu = () => {
 
@@ -28,7 +29,6 @@ export const BurgerMenu = () => {
         dispatch(setIsMenuOpenAC({value: false}));
 
         setIsMenuListOpen(false);
-        // setBodyLocked();
     }
 
     return (
@@ -38,7 +38,7 @@ export const BurgerMenu = () => {
                 <NavLink className={isActiveLink ? 'active' : ''}
                          onClick={onClickHandler}
                          data-test-id='navigation-showcase'
-                         to="books/all">Витрина книг
+                         to={ALL}>Витрина книг
                     <button onClick={onClickHandler} type='button'>
                         <img src={iconArrow} alt="arrow"/>
                     </button>
@@ -48,11 +48,12 @@ export const BurgerMenu = () => {
                 {statusLoading === 'idle'
                     &&
                     <NavLink data-test-id='navigation-books'
-                             to='books/all'
+                             to={ALL}
                              onClick={onClickCloseHandler}>
                         Все книги
                     </NavLink>
-                    &&
+                }
+                {statusLoading === 'idle' &&
                     categories.map(link => (
                         <MenuItem key={link.id}>
                             <NavLink to={`books/${link.path}`}
@@ -66,9 +67,9 @@ export const BurgerMenu = () => {
             </MenuList>
             <div>
                 <NavLink data-test-id='navigation-terms'
-                         onClick={onClickCloseHandler} to="/rules">Правила пользования</NavLink>
+                         onClick={onClickCloseHandler} to={RULES}>Правила пользования</NavLink>
                 <NavLink data-test-id='navigation-contract'
-                         onClick={onClickCloseHandler} to="/treaty">Договор оферты</NavLink>
+                         onClick={onClickCloseHandler} to={TREATY}>Договор оферты</NavLink>
             </div>
         </StyledBurgerMenu>
     )

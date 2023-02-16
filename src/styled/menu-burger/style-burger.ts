@@ -1,11 +1,13 @@
 import styled from 'styled-components';
 
-import {PropsBurger} from './burger';
+type BurgerProps = {
+    isOpenBurger: boolean
+}
 
-export const Burger = styled.button<PropsBurger>`
+export const Burger = styled.button<BurgerProps>`
 
   display: none;
-  @media (max-width: 768px) {
+  @media (max-width: 840px) {
     display: block;
     position: relative;
     width: 30px;

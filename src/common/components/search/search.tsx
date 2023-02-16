@@ -41,9 +41,8 @@ export const Search: FC<SearchPropsType> = ({onClick, view}) => {
                        onClick={onClickOpenSearchHandler}
                        data-test-id='input-search'
                 />
-                <button type="button">
-                    {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions */}
-                    <img onClick={onClickCloseSearchHandler} src={searchClose}
+                <button type="button" onClick={onClickCloseSearchHandler}>
+                    <img src={searchClose}
                          data-test-id='button-search-close' alt="searchClose"/>
                 </button>
             </SearchBlock>
@@ -53,13 +52,12 @@ export const Search: FC<SearchPropsType> = ({onClick, view}) => {
                     <img src={sortDown} alt="sortDown"/>
                 </SortBlock>
                 <SearchIconMobile
-                                  mediaWidth="590.98px"
-                                  width="32px"
-                                  height="32px"
+                    mediaWidth="590.98px"
+                    width="32px"
+                    height="32px"
+                    onClick={onClickCloseSearchHandler}
                 >
-                    {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions */}
-                    <img onClick={onClickCloseSearchHandler}
-                         data-test-id='button-search-open'
+                    <img data-test-id='button-search-open'
                          src={searchMobile}
                          alt="searchMobile"/>
                 </SearchIconMobile>

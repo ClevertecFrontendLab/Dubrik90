@@ -17,13 +17,8 @@ export const HeaderContent = styled.div`
     align-items: center;
     position: relative;
 `
+
 export const HeaderImage = styled.div<PropsImageType>`
-   // display: flex;
-   // text-align: center;
-  //  max-width: ${({width}) => width || '96px'};
-  //  max-height: ${({height}) => height || '96px'};
-  //  border-radius: ${({borderRadius}) => borderRadius || '100%'};
-  //  transition: all 0.3s;
 
     :hover {
         scale: ${({hover}) => hover ? '1.1' : '1'};
@@ -32,13 +27,11 @@ export const HeaderImage = styled.div<PropsImageType>`
     img {
         max-width: 100%;
         object-fit: cover;
-       // border-radius: ${({borderRadius}) => borderRadius || '100%'};
-     //   justify-content: center;
         cursor: pointer;
     }
 `
 export const HeaderImageLogo = styled(HeaderImage)`
-    @media (max-width: 768px) {
+    @media (max-width: 840px) {
         display: none;
     }
 `

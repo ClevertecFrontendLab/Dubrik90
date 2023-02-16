@@ -18,15 +18,14 @@ import {
     HeaderWrapper,
     ProfileName
 } from './header-style';
+import {HOME} from "../../../app/routs";
 
 export const Header = () => {
     const dispatch = useAppDispatch();
     const isMenuOpen = useAppSelector(state => state.app.isMenuOpen);
-    //  const [isBodyLocked, setBodyLocked] = useBodyScrollLock();
 
     const onClickBurger = () => {
         dispatch(setIsMenuOpenAC({value: !isMenuOpen}));
-        // setBodyLocked()
     }
     const onClickCloseBurger = () => {
         if (isMenuOpen) {
@@ -40,7 +39,7 @@ export const Header = () => {
                 <HeaderContent onClick={onClickCloseBurger}>
                     <BurgerMenu/>
                     <HeaderImageLogo width="170px" height="40px" borderRadius="0">
-                        <Link to="/">
+                        <Link to={HOME}>
                             <img src={logo}
                                  alt="Logo"/>
                         </Link>
@@ -52,7 +51,7 @@ export const Header = () => {
                     <HeaderProfile>
                         <ProfileName>Привет, Иван!</ProfileName>
                         <HeaderImageProfile width="58px" height="58px">
-                            <Link to="/">
+                            <Link to={HOME}>
                                 <img src={avatar}
                                      alt="avatar"/>
                             </Link>

@@ -11,6 +11,7 @@ import {MainPage} from './pages/main';
 import {Сontract} from './pages/main/сontract/сontract';
 
 import './index.css';
+import {ALL, BOOK_PAGE, HOME, MAIN_PAGE, RULES, TREATY} from './app/routs';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -20,14 +21,14 @@ root.render(
         <Provider store={store}>
             <HashRouter>
                 <Routes>
-                    <Route path="/" element={<Layout/>}>
+                    <Route path={HOME} element={<Layout/>}>
                         <Route element={<LayoutMainPage/>}>
-                            <Route index={true} element={<Navigate to="/books/all"/>}/>
-                            <Route path="/books/:category" element={<MainPage/>}/>
-                            <Route path="/rules" element={<Сontract title="Правила пользования"/>}/>
-                            <Route path="/treaty" element={<Сontract title="Договор оферты"/>}/>
+                            <Route index={true} element={<Navigate to={ALL}/>}/>
+                            <Route path={MAIN_PAGE} element={<MainPage/>}/>
+                            <Route path={RULES} element={<Сontract title="Правила пользования"/>}/>
+                            <Route path={TREATY} element={<Сontract title="Договор оферты"/>}/>
                         </Route>
-                        <Route path="books/:category/:bookId" element={<BooksPage/>}/>
+                        <Route path={BOOK_PAGE} element={<BooksPage/>}/>
                     </Route>
                 </Routes>
             </HashRouter>

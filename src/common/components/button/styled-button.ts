@@ -26,9 +26,7 @@ export const StyledButton = styled.button<PropsButton>`
     }
 
     :hover {
-
         transition: all 0.3s;
-       // background: linear-gradient(231.58deg, #F83600 -53.35%, #F9D423 297.76%);
         background-size: 100%;
         background-position: left;
     }

@@ -14,16 +14,14 @@ type BreadcrumbsPropsType = {
     title: string
 }
 export const Breadcrumbs: FC<BreadcrumbsPropsType> = ({title}) => {
-    const {category, bookId} = useParams()
-    const books = useAppSelector(state => state.books.books)
-   // const {title} = books.filter(el => (el.id.toString() === bookId))[0]
+    const book = useAppSelector(state => state.card)
 
     return (
         <BreadcrumbsWrapper>
             <Container>
                 <BreadcrumbsBlock>
                     <Category>
-                        {category}
+                        {book.categories}
                     </Category>
                     <BookName>
                         {title}
