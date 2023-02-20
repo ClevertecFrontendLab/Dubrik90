@@ -1,6 +1,6 @@
 import React, {FC} from 'react'
 
-import {ContractWrapper, SubList, TitleList, СontractTitle} from './contract-style';
+import {ContractWrapper, SubList, TitleList, СontractTitle} from './style';
 
 type RulesPropsType = {
     title: string

@@ -1,14 +1,13 @@
 import React, {ChangeEvent, FC, useState} from 'react';
 
-import {BtnColumn} from '../../../assets/img/action/column';
-import filterMobile from '../../../assets/img/action/filter-mobile.svg';
-import {BtnList} from '../../../assets/img/action/list';
-import {SearchIcon} from '../../../assets/img/action/search-icon';
-import searchMobile from '../../../assets/img/action/search-mobile.svg';
-import searchClose from '../../../assets/img/action/searchClose.svg';
-import sortDown from '../../../assets/img/action/sortDown.svg';
-
-import {SearchBlock, SearchIconMobile, SearchWrapper, SortBlock, ViewBlock} from './style-seach';
+import {BtnColumn} from './assets/btn-column';
+import filterMobile from './assets/filter-mobile.svg';
+import {BtnList} from './assets/btn-list';
+import {SearchIcon} from './assets/search-icon';
+import searchMobile from './assets/search-mobile.svg';
+import searchClose from './assets/searchClose.svg';
+import sortDown from './assets/sortDown.svg';
+import {SearchBlock, SearchIconMobile, SearchWrapper, SortBlock, ViewBlock} from './style';
 
 
 type SearchPropsType = {

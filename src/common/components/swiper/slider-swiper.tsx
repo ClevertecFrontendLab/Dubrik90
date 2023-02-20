@@ -3,12 +3,12 @@ import {EffectFade, FreeMode, Navigation, Pagination, Thumbs} from 'swiper';
 import {Swiper, SwiperSlide} from 'swiper/react';
 import SwiperClass from 'swiper/types/swiper-class';
 
-import imageNone from '../../../assets/img/imageNone.png'
-import {ImageType} from '../../../pages/book-page/api/book-page-api';
+import imageNone from './assets/imageNone.png'
 
 import 'swiper/css/free-mode';
 import 'swiper/css/navigation';
 import 'swiper/css/effect-fade';
+import {ImageType} from '../../../types/types';
 
 type SwiperSliderPropsType = {
     image: ImageType[]

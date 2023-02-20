@@ -1,0 +1,1 @@
+export {Сontract} from './сontract'

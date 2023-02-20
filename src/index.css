@@ -78,11 +78,6 @@ body {
   overflow:clip;
 
 }
-@media (max-width:840.98px) {
-  #root {
-    /*overflow:hidden;*/
-  }
-}
 code {
   font-family:source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

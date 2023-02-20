@@ -1,11 +1,11 @@
 import React, {FC} from 'react';
 import {Link} from 'react-router-dom';
 
-import imageNone from '../../assets/img/imageNone.png'
+import imageNone from '../../common/components/swiper/assets/imageNone.png'
 import {StyledButton} from '../../common/components/button/styled-button';
 import {Raring} from '../../common/components/rating/raring';
-import {BookType} from '../book-page/api/book-page-api';
 import {BookWrapper, ImageBlock, RatingWrapper, SubTitleBook, TitleBook} from './book-card-style';
+import {BookType} from "../../types/types";
 
 
 type BookCardPropsType = {

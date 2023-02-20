@@ -4,8 +4,10 @@ import {AxiosError} from 'axios';
 
 import {setAppStatusAC} from '../../../app/app-reducer';
 import {AppThunk} from '../../../app/store';
+import {BooksResType, CategoriesResType} from '../../../types/types';
+import {booksAPI} from "./book-page-api";
 
-import {booksAPI, BooksResType, CategoriesResType} from './book-page-api';
+
 
 type InitialStateType = {
     initialize: boolean,

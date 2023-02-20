@@ -1,7 +1,7 @@
 import React from 'react';
 
 import loader from './assets/loader.svg'
-import {LoaderImg, WrapperLoader} from './loader-style';
+import {LoaderImg, WrapperLoader} from './style';
 
 export const Loader = () => (
     <WrapperLoader data-test-id='loader'>
