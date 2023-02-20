@@ -2,12 +2,13 @@ import React, {useState} from 'react';
 import {NavLink, useLocation} from 'react-router-dom';
 
 import {setIsMenuOpenAC} from '../../../app/app-reducer';
-import iconArrow from '../../../assets/img/action/Icon-arrow.svg'
+import iconArrow from './assets/icon-arrow.svg'
 import {useAppDispatch, useAppSelector} from '../../hooks/hooks';
 import {useBodyScrollLock} from '../../hooks/use-body-scroll-lock';
 
-import {MenuItem, MenuList, StyledNavMenu} from './style-nav';
-import {ALL, RULES, TREATY} from "../../../app/routs";
+import {MenuItem, MenuList, StyledNavMenu} from './style';
+import {ROUTS} from "../../../constans/routs";
+import {CategoriesType} from "../../../types/types";
 
 export const NavMenu = () => {
     const dispatch = useAppDispatch();
@@ -35,7 +36,7 @@ export const NavMenu = () => {
                 <NavLink className={isActiveLink ? 'active' : ''}
                          onClick={onClickHandler}
                          data-test-id='navigation-showcase'
-                         to={ALL}>Витрина книг
+                         to={ROUTS.ALL}>Витрина книг
                     <button onClick={onClickHandler} type='button'>
                         <img src={iconArrow} alt="arrow"/>
                     </button>
@@ -45,13 +46,13 @@ export const NavMenu = () => {
                 {statusLoading === 'idle'
                     &&
                     <NavLink data-test-id='navigation-books'
-                             to={ALL}
+                             to={ROUTS.ALL}
                              onClick={onClickCloseHandler}>
                         Все книги
                     </NavLink>
                 }
                 {statusLoading === 'idle' &&
-                    categories.map(link => (
+                    categories.map((link: CategoriesType) => (
                         <MenuItem key={link.id}>
                             <NavLink to={`books/${link.path}`}
                                      onClick={onClickCloseHandler}>
@@ -64,9 +65,9 @@ export const NavMenu = () => {
             </MenuList>
             <div>
                 <NavLink data-test-id='navigation-terms'
-                         onClick={onClickCloseHandler} to={RULES}>Правила пользования</NavLink>
+                         onClick={onClickCloseHandler} to={ROUTS.RULES}>Правила пользования</NavLink>
                 <NavLink data-test-id='navigation-contract'
-                         onClick={onClickCloseHandler} to={TREATY}>Договор оферты</NavLink>
+                         onClick={onClickCloseHandler} to={ROUTS.TREATY}>Договор оферты</NavLink>
             </div>
         </StyledNavMenu>
     )

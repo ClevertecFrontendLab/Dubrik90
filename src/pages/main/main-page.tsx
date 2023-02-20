@@ -1,15 +1,16 @@
 import React, {useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom';
 
-import {Error} from '../../common/components/error/error';
-import {Loader} from '../../common/components/loader/loader';
-import {Search} from '../../common/components/search/search';
+import {Loader} from '../../common/components/loader';
+import {Error} from '../../common/components/error';
+import {Search} from '../../common/components/search';
 import {useAppDispatch, useAppSelector} from '../../common/hooks/hooks';
 import {BookCardWrapper} from '../../styled/book-card-wrapper/styled-book-cardw-wrapper';
 import {BookPageStyle} from '../../styled/main-styled';
 import {BookCard} from '../book-card';
-import {BookType} from '../book-page/api/book-page-api';
 import {getBooksTC} from '../book-page/api/book-page-reducer';
+import {BookType} from '../../types/types';
+
 
 export const MainPage = () => {
     const {category} = useParams()

@@ -7,8 +7,7 @@ import {Container, Wrapper} from '../../../styled/styled-wpapper';
 import {useAppDispatch} from '../../hooks/hooks';
 import {Footer} from '../footer';
 import {Header} from '../header';
-import {ScrollToTop} from '../scroll-to-top';
-
+import {ScrollToTop} from '../../hooks/scroll-to-top';
 
 export const Layout = () => {
     const dispatch = useAppDispatch()
@@ -16,7 +15,6 @@ export const Layout = () => {
     const onClickCloseHandler = () => {
         dispatch(setIsMenuOpenAC({value: false}))
     }
-
 
     return (
         <React.Fragment>

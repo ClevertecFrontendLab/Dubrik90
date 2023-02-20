@@ -1,29 +1,23 @@
 import React, {useState} from 'react';
 
-import arrowReviews from '../../../assets/img/action/arrow-reviews.svg';
-import ellipse from '../../../assets/img/Ellipse.png';
-import {CommentsType} from '../../../pages/book-page/api/book-page-api';
+import arrowReviews from './assets/arrow-reviews.svg';
+import ellipse from './assets/ellipse.png';
+import {Container} from '../../../styled/styled-wpapper';
+import {CommentsType} from '../../../types/types';
+import {useAppSelector} from '../../hooks/hooks';
 import {
     AboutBlock,
     BookButton,
     BookInfoWrap,
     BooksAbout,
     DescriptionBook,
-    DeskBlock,
-    Detailed,
-    Detailedwrap,
-    ImgReview,
-    Rating,
-    Reviews,
-    ReviewsBlock,
-    ReviewsWrap,
-    SwiperWrapper,
+    DeskBlock, Detailed, DetailedWrap, ImgReview, Reviews, ReviewsBlock, ReviewsWrap,
     TitleRating
-} from '../../../pages/book-page/book-page-style';
-import {Container} from '../../../styled/styled-wpapper';
-import {useAppSelector} from '../../hooks/hooks';
-import {Raring} from '../rating/raring';
-import {SwiperSlider} from '../swiper/slider-swiper';
+} from './style';
+import {SwiperWrapper} from '../swiper/style';
+import {SwiperSlider} from '../swiper';
+import {RatingWrapper} from '../../../pages/book-page/book-page-style';
+import {Raring} from '../rating';
 
 export const Book = () => {
     const book = useAppSelector(state => state.card)
@@ -50,58 +44,33 @@ export const Book = () => {
                 </DescriptionBook>
             </BooksAbout>
             <BookInfoWrap>
-                <Rating>
-                    <TitleRating>
-                        Рейтинг
-                    </TitleRating>
+                <RatingWrapper>
+                    <TitleRating> Рейтинг </TitleRating>
                     <Raring rating={book.rating}/>
-                </Rating>
+                </RatingWrapper>
                 <AboutBlock>
-                    <TitleRating>
-                        Подробная информация
-                    </TitleRating>
+                    <TitleRating> Подробная информация </TitleRating>
                     <Detailed>
-                        <Detailedwrap>
-                            <div>
-                                <span>Издательство</span> <p>{book.publish}</p>
-                            </div>
-                            <div>
-                                <span>Год издания</span> <p>{book.issueYear}</p>
-                            </div>
-                            <div>
-                                <span>Страниц</span> <p>{book.pages}</p>
-                            </div>
-                            <div>
-                                <span>Переплёт</span> <p>{book.cover}</p>
-                            </div>
-                            <div>
-                                <span>Формат</span> <p>{book.format}</p>
-                            </div>
-                        </Detailedwrap>
-                        <Detailedwrap>
-                            <div>
-                                <span>Жанр</span> <p>{book.categories[0]}</p>
-                            </div>
-                            <div>
-                                <span>Вес</span> <p>{book.weight} г</p>
-                            </div>
-                            <div>
-                                <span>ISBN</span> <p>{book.ISBN}</p>
-                            </div>
-                            <div>
-                                <span>Изготовитель</span>
-                                <p>{book.producer}</p>
-                            </div>
-                        </Detailedwrap>
+                        <DetailedWrap>
+                            <div><span>Издательство</span> <p>{book.publish}</p></div>
+                            <div><span>Год издания</span> <p>{book.issueYear}</p></div>
+                            <div><span>Страниц</span> <p>{book.pages}</p></div>
+                            <div><span>Переплёт</span> <p>{book.cover}</p></div>
+                            <div><span>Формат</span> <p>{book.format}</p></div>
+                        </DetailedWrap>
+                        <DetailedWrap>
+                            <div><span>Жанр</span> <p>{book.categories[0]}</p></div>
+                            <div><span>Вес</span> <p>{book.weight} г</p></div>
+                            <div><span>ISBN</span> <p>{book.ISBN}</p></div>
+                            <div><span>Изготовитель</span>
+                                <p>{book.producer}</p></div>
+                        </DetailedWrap>
                     </Detailed>
                 </AboutBlock>
                 <ReviewsBlock>
                     <TitleRating onClick={onClickOpenHandler}>
-                        <p>
-                            Отзывы
-                            <span>
-                                {book.comments ? book.comments.length : '0'}
-                            </span>
+                        <p> Отзывы
+                            <span>{book.comments ? book.comments.length : '0'}</span>
                         </p>
                         <ImgReview onClick={onClickOpenHandler}
                                    src={arrowReviews}

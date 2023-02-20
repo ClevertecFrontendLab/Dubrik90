@@ -4,7 +4,6 @@ export const FooterStyle = styled.footer`
     padding-top: 16px;
     padding-bottom: 16px;
 `
-
 export const FooterBlock = styled.div`
     display: flex;
     justify-content: space-between;

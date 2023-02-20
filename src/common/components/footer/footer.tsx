@@ -1,12 +1,12 @@
 import React from 'react';
 
-import facebook from '../../../assets/img/social/faceboock.svg'
-import instagram from '../../../assets/img/social/instagramm.svg'
-import linkedin from '../../../assets/img/social/linkedin.svg'
-import vk from '../../../assets/img/social/vk.svg'
+import facebook from './assets/faceboock.svg'
+import instagram from './assets/instagramm.svg'
+import linkedin from './assets/linkedin.svg'
+import vk from './assets/vk.svg'
 import {Container} from '../../../styled/styled-wpapper';
 
-import {FooterBlock, FooterStyle, SocialIcons} from './footer-styled';
+import {FooterBlock, FooterStyle, SocialIcons} from './styled';
 
 export const Footer = () => (
     <FooterStyle>
