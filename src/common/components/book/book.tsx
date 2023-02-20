@@ -11,12 +11,11 @@ import {
     BookInfoWrap,
     BooksAbout,
     DescriptionBook,
-    DeskBlock, Detailed, DetailedWrap, ImgReview, Reviews, ReviewsBlock, ReviewsWrap,
+    DeskBlock, Detailed, DetailedWrap, ImgReview, RatingWrapper, Reviews, ReviewsBlock, ReviewsWrap,
     TitleRating
 } from './style';
 import {SwiperWrapper} from '../swiper/style';
 import {SwiperSlider} from '../swiper';
-import {RatingWrapper} from '../../../pages/book-page/book-page-style';
 import {Raring} from '../rating';
 
 export const Book = () => {

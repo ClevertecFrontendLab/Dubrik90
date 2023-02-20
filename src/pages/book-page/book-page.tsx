@@ -1,13 +1,13 @@
 import React, {useEffect} from 'react';
 import {useParams} from 'react-router-dom';
 
-import {Book} from '../../common/components/book/book';
-import {Breadcrumbs} from '../../common/components/breadcrumbs/breadcrumbs';
-import {Error} from '../../common/components/error/error';
-import {Loader} from '../../common/components/loader/loader';
+import {Book} from '../../common/components/book';
+import {Breadcrumbs} from '../../common/components/breadcrumbs';
+import {Error} from '../../common/components/error';
+import {Loader} from '../../common/components/loader';
 import {useAppDispatch, useAppSelector} from '../../common/hooks/hooks';
 import {getCardTC} from '../book-card/api/book-card-reducer';
-import {BookWrapper} from '../main/main-style';
+import {BookWrapper} from "./style";
 
 
 export const BooksPage = () => {

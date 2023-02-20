@@ -197,6 +197,10 @@ export const DetailedWrap = styled.div`
         color: #363636;
     }
 `;
+export const RatingWrapper = styled.div`
+    margin-bottom: 62px;
+    position: relative;
+`;
 export const ReviewsBlock = styled.div`
     position: relative;
 `

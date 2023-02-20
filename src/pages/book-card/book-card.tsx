@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 import imageNone from '../../common/components/swiper/assets/imageNone.png'
 import {StyledButton} from '../../common/components/button/styled-button';
 import {Raring} from '../../common/components/rating/raring';
-import {BookWrapper, ImageBlock, RatingWrapper, SubTitleBook, TitleBook} from './book-card-style';
+import {CardWrapper, ImageBlock, RatingCardWrapper, SubTitleCard, TitleCard} from './style';
 import {BookType} from "../../types/types";
 
 
@@ -22,7 +22,7 @@ export const BookCard: FC<BookCardPropsType> = (
     }) => (
     <Link data-test-id="card"
           to={`/books/${category}/${book.id}`}>
-        <BookWrapper isOpen={isOpen}>
+        <CardWrapper isOpen={isOpen}>
             <ImageBlock isOpen={isOpen}>
                 {
                     book.image
@@ -31,22 +31,22 @@ export const BookCard: FC<BookCardPropsType> = (
                         : <img src={imageNone} alt="Logo"/>
                 }
             </ImageBlock>
-            <RatingWrapper isOpen={isOpen}>
+            <RatingCardWrapper isOpen={isOpen}>
                 <Raring rating={book.rating}/>
-            </RatingWrapper>
-            <TitleBook isOpen={isOpen}>
+            </RatingCardWrapper>
+            <TitleCard isOpen={isOpen}>
                 {book.title}
-            </TitleBook>
-            <SubTitleBook isOpen={isOpen}>
+            </TitleCard>
+            <SubTitleCard isOpen={isOpen}>
                 {book.authors} {book.issueYear}
-            </SubTitleBook>
+            </SubTitleCard>
             <StyledButton
                 isBooked={book.booking?.order}
                 isOpen={isOpen}
             >
                 {book.booking?.order ? 'ЗАБРОНИРОВАТЬ' : 'занята до 03.05'}
             </StyledButton>
-        </BookWrapper>
+        </CardWrapper>
     </Link>
 )
 

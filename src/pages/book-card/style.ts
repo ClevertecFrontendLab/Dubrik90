@@ -9,7 +9,7 @@ export const TextStyle = styled.p`
 type PropsCardType = {
     isOpen: boolean
 }
-export const BookWrapper = styled.div<PropsCardType>`
+export const CardWrapper = styled.div<PropsCardType>`
     background: #FFFFFF;
     box-shadow: 0 2px 4px rgba(191, 196, 201, 0.2), 0 3px 4px rgba(191, 196, 201, 0.18), 0 1px 5px rgba(191, 196, 201, 0.24);
     border-radius: 10px;
@@ -44,6 +44,7 @@ export const BookWrapper = styled.div<PropsCardType>`
     }
 
 `
+
 export const ImageBlock = styled.div<PropsCardType>`
     grid-area: img;
     overflow: hidden;
@@ -65,7 +66,14 @@ export const ImageBlock = styled.div<PropsCardType>`
         align-self: ${({isOpen}) => !isOpen && 'start'};
     }
 `
-export const TitleBook = styled(TextStyle)<PropsCardType>`
+export const RatingCardWrapper = styled.div<PropsCardType>`
+    grid-area: rating;
+    align-self: ${({isOpen}) => !isOpen && 'end'};
+    @media (max-width: 530px) {
+        margin-bottom: ${({isOpen}) => !isOpen && '16px'};
+    }
+`
+export const TitleCard = styled(TextStyle)<PropsCardType>`
     grid-area: title;
     flex: 1 1 auto;
     margin-bottom: ${({isOpen}) => isOpen && '12px'};
@@ -80,7 +88,7 @@ export const TitleBook = styled(TextStyle)<PropsCardType>`
     }
 
 `
-export const SubTitleBook = styled(TextStyle)<PropsCardType>`
+export const SubTitleCard = styled(TextStyle)<PropsCardType>`
     grid-area: subTitle;
     color: #727272;
     font-size: ${({isOpen}) => !isOpen && '16px'};
@@ -89,10 +97,4 @@ export const SubTitleBook = styled(TextStyle)<PropsCardType>`
 
     }
 `
-export const RatingWrapper = styled.div<PropsCardType>`
-    grid-area: rating;
-    align-self: ${({isOpen}) => !isOpen && 'end'};
-    @media (max-width: 530px) {
-        margin-bottom: ${({isOpen}) => !isOpen && '16px'};
-    }
-`
+
