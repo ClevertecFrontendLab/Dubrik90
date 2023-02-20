@@ -19,7 +19,8 @@ export const NavMenu = () => {
     const categories = useAppSelector(state => state.books.categories);
     const isActiveLink = useLocation().pathname.includes('books');
     const statusLoading = useAppSelector(state => state.app.status);
-
+    const books = useAppSelector(state => state.books.books);
+    const numberOfBooks = (category: string) => books?.filter((el) => el.categories.includes(category)).length;
     const onClickHandler = () => {
         setIsMenuListOpen(!isMenuListOpen);
     }
@@ -33,14 +34,14 @@ export const NavMenu = () => {
         <StyledNavMenu data-test-id='burger-navigation' isMenuOpen={isMenuOpen}
                        isMenuListOpen={isMenuListOpen} onClick={e => e.stopPropagation()}>
             <div>
-                <NavLink className={isActiveLink ? 'active' : ''}
-                         onClick={onClickHandler}
-                         data-test-id='navigation-showcase'
-                         to={ROUTS.ALL}>Витрина книг
+                <a className={isActiveLink ? 'active' : ''}
+                   // onClick={onClickHandler}
+                   data-test-id='navigation-showcase'
+                >Витрина книг
                     <button onClick={onClickHandler} type='button'>
                         <img src={iconArrow} alt="arrow"/>
                     </button>
-                </NavLink>
+                </a>
             </div>
             <MenuList isMenuListOpen={isMenuListOpen}>
                 {statusLoading === 'idle'
@@ -57,7 +58,7 @@ export const NavMenu = () => {
                             <NavLink to={`books/${link.path}`}
                                      onClick={onClickCloseHandler}>
                                 {link.name}
-                                <span>10</span>
+                                <span>{numberOfBooks(link.name)}</span>
                             </NavLink>
                         </MenuItem>
                     ))
@@ -65,7 +66,8 @@ export const NavMenu = () => {
             </MenuList>
             <div>
                 <NavLink data-test-id='navigation-terms'
-                         onClick={onClickCloseHandler} to={ROUTS.RULES}>Правила пользования</NavLink>
+                         onClick={onClickCloseHandler} to={ROUTS.RULES}>Правила
+                    пользования</NavLink>
                 <NavLink data-test-id='navigation-contract'
                          onClick={onClickCloseHandler} to={ROUTS.TREATY}>Договор оферты</NavLink>
             </div>

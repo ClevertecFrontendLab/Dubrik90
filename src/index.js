@@ -8,10 +8,10 @@ import {Layout} from './common/components/layout';
 import {LayoutMainPage} from './common/components/layout-main-page';
 import {BooksPage} from './pages/book-page';
 import {MainPage} from './pages/main';
-import {Сontract} from './common/components/сontract/сontract';
 
 import './index.css';
 import {ROUTS} from './constans/routs';
+import {Сontract} from './common/components/сontract';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 

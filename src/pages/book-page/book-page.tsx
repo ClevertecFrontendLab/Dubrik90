@@ -16,6 +16,7 @@ export const BooksPage = () => {
     const book = useAppSelector(state => state.card)
     const statusLoading = useAppSelector(state => state.app.status)
 
+
     useEffect(() => {
         dispatch(getCardTC(bookId))
     }, [bookId, dispatch])

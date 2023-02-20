@@ -18,17 +18,24 @@ export const MainPage = () => {
     const books = useAppSelector(state => state.books.books)
     const initialize = useAppSelector(state => state.books.initialize)
     const statusLoading = useAppSelector(state => state.app.status)
+    const categories = useAppSelector(state => state.books.categories)
+    let activeCategory: any = [];
 
     const [view, setView] = useState<boolean>(true);
+
+    useEffect(() => {
+        dispatch(getBooksTC())
+    }, [dispatch])
+
+    if (categories.length !== 0 && category !== 'all') {
+        activeCategory = categories.filter(el => (el.path === category))[0].name
+    }
+
+    const activeBooks = category === 'all' ? books : books.filter(el => (el.categories).includes(activeCategory))
+
     const onClickHandler = () => {
         setView(!view)
     }
-
-    useEffect(() => {
-        if (!initialize) {
-            dispatch(getBooksTC())
-        }
-    }, [dispatch, initialize])
 
     if (statusLoading === 'loading') return <Loader/>
     if (statusLoading === 'error') return <Error/>
@@ -40,7 +47,7 @@ export const MainPage = () => {
             />
             <BookCardWrapper view={view}>
                 {
-                    books.map((el: BookType) => (
+                    activeBooks.map((el: BookType) => (
                         <BookCard book={el}
                                   key={el.id}
                                   isOpen={view}

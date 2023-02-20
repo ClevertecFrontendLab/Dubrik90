@@ -63,6 +63,7 @@ export const getCardTC = (idBook?: string): AppThunk => async (dispatch) => {
     try {
         const id = idBook ? idBook : '';
         const res = await booksAPI.getCard(id)
+        
 
         dispatch(setCardAC(res.data))
         dispatch(setAppStatusAC({status: 'idle'}))

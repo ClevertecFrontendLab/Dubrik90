@@ -79,7 +79,7 @@ export const TitleCard = styled(TextStyle)<PropsCardType>`
     margin-bottom: ${({isOpen}) => isOpen && '12px'};
     color: #363636;
     font-size: ${({isOpen}) => !isOpen && '24px'};
-    font-weight: ${({isOpen}) => !isOpen && '700'};
+    font-weight: 700;
     line-height: ${({isOpen}) => !isOpen && '30px'};
     align-self: ${({isOpen}) => !isOpen && 'center'};
     @media (max-width: 590px) {
