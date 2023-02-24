@@ -33,7 +33,7 @@ export const Book = () => {
                     <SwiperSlider image={book.images}/>
                 </SwiperWrapper>
                 <DescriptionBook>
-                    <p>{book.title}</p>
+                    <p data-test-id='book-title'>{book.title}</p>
                     <span>{book.authors[0]}, {book.issueYear}</span>
                     <BookButton type="button">Забронировать</BookButton>
                     <DeskBlock>

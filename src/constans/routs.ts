@@ -5,4 +5,5 @@ export const ROUTS = {
     BOOK_PAGE: 'books/:category/:bookId',
     RULES: '/rules',
     TREATY: '/treaty',
+    ROLL_BACK: `/books/`
 }

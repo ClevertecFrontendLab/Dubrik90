@@ -219,6 +219,7 @@ export const Reviews = styled.div<ReviewsPropsType>`
     opacity: ${({openReviews}) => openReviews ? '1' : '0'};
     visibility: ${({openReviews}) => openReviews ? 'visible' : 'hidden'};
 `
+
 export const ReviewsWrap = styled.div`
     display: flex;
     flex-direction: column;

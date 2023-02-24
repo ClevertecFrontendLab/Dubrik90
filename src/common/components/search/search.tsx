@@ -8,6 +8,8 @@ import searchMobile from './assets/search-mobile.svg';
 import searchClose from './assets/searchClose.svg';
 import sortDown from './assets/sortDown.svg';
 import {SearchBlock, SearchIconMobile, SearchWrapper, SortBlock, ViewBlock} from './style';
+import {useAppDispatch, useAppSelector} from "../../hooks/hooks";
+import {setSearchBookAC, setSortDownAC} from "../../../pages/book-page/api/book-page-reducer";
 
 
 type SearchPropsType = {
@@ -15,26 +17,36 @@ type SearchPropsType = {
     onClick: () => void
 }
 export const Search: FC<SearchPropsType> = ({onClick, view}) => {
-    const [value, setValue] = useState('')
-    const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        setValue(e.currentTarget.value)
-    }
-    const [openSearch, setOpenSearch] = useState(true)
+    const dispatch = useAppDispatch();
 
+    const sort = useAppSelector(state => state.books.sortDown)
+    const [openSearchInput, setOpenSearchInput] = useState(true)
+    const inputSearchValue = useAppSelector(state => state.books.searchBook)
+
+    const onChangeSearchHandler = (e: ChangeEvent<HTMLInputElement>) => {
+        const searchValue = e.currentTarget.value
+
+        dispatch(setSearchBookAC({searchValue}))
+    }
     const onClickOpenSearchHandler = () => {
-        setOpenSearch(false)
+        setOpenSearchInput(false)
     }
     const onClickCloseSearchHandler = () => {
-        setOpenSearch(!openSearch)
+        setOpenSearchInput(!openSearchInput)
+    }
+    const onClickSortHandler = () => {
+        dispatch(setSortDownAC())
     }
 
     return (
-        <SearchWrapper openSearch={openSearch}>
-            <SearchBlock openSearch={openSearch}>
+        <SearchWrapper openSearch={openSearchInput}>
+            <SearchBlock openSearch={openSearchInput}>
                 <SearchIcon
-                    onClick={onClickOpenSearchHandler}/>
-                <input value={value}
-                       onChange={onChangeHandler}
+                    onClick={onClickOpenSearchHandler}
+                    openSearch={openSearchInput}
+                />
+                <input value={inputSearchValue}
+                       onChange={onChangeSearchHandler}
                        type="text"
                        placeholder="Поиск книги или автора…"
                        onClick={onClickOpenSearchHandler}
@@ -42,12 +54,13 @@ export const Search: FC<SearchPropsType> = ({onClick, view}) => {
                 />
                 <button type="button" onClick={onClickCloseSearchHandler}>
                     <img src={searchClose}
-                         data-test-id='button-search-close' alt="searchClose"/>
+                         data-test-id='button-search-close'
+                         alt="searchClose"/>
                 </button>
             </SearchBlock>
             <div>
-                <SortBlock>
-                    <button type="submit">По рейтингу</button>
+                <SortBlock sort={sort}>
+                    <button data-test-id='sort-rating-button' onClick={onClickSortHandler} type="submit">По рейтингу</button>
                     <img src={sortDown} alt="sortDown"/>
                 </SortBlock>
                 <SearchIconMobile
@@ -65,7 +78,7 @@ export const Search: FC<SearchPropsType> = ({onClick, view}) => {
                 </SearchIconMobile>
 
             </div>
-            <ViewBlock openSearch={openSearch}
+            <ViewBlock openSearch={openSearchInput}
                        onClick={onClick}>
                 <BtnColumn isClick={view}/>
                 <BtnList isClick={view}/>

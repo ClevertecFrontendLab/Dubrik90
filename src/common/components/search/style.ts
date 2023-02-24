@@ -39,18 +39,23 @@ export const SearchBlock = styled.div<SearchBlockPropsType>`
     }
 
     button {
+        display: none;
+        //opacity: 0;
+       // visibility: hidden;
         @media (max-width: 590px) {
-
+            display: block;
+            opacity: ${({openSearch}) => openSearch ? '0' : '1'};
+          //  visibility: visible;
+            width: 16px;
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            transition: opacity 0.3s;
+            z-index: 50;
         }
-        opacity: ${({openSearch}) => openSearch ? '0' : '1'};
-        width: 16px;
-        position: absolute;
-        right: 16px;
-        top: 50%;
-        transform: translateY(-50%);
-        cursor: pointer;
-        transition: opacity 0.3s;
-        z-index: 50;
+
     }
 
 
@@ -76,6 +81,7 @@ export const SearchBlock = styled.div<SearchBlockPropsType>`
             line-height: 18px;
             color: #A7A7A7;
         }
+
     }
 
     svg {
@@ -90,13 +96,6 @@ export const SearchBlock = styled.div<SearchBlockPropsType>`
 
         path {
             transition: fill 0.3s;
-        }
-    }
-
-
-    input:focus ~ svg {
-        path {
-            fill: #F83600;
         }
     }
 `
@@ -125,7 +124,10 @@ export const SearchIconMobile = styled.div<PropsImageType>`
         cursor: pointer;
     }
 `
-export const SortBlock = styled.div`
+type SortBlockPropsType = {
+    sort: boolean
+}
+export const SortBlock = styled.div<SortBlockPropsType>`
     position: relative;
     padding: 10px 16px 10px 40px;
     font-size: 14px;
@@ -145,8 +147,8 @@ export const SortBlock = styled.div`
         position: absolute;
         top: 50%;
         left: 16px;
-        transform: translateY(-50%);
-        // transform: scale(1, -1);
+        transition: all 0.3s;
+        transform: ${({sort}) => sort ? 'scale(1, -1) translateY(50%)' : 'translateY(-50%)'};
     }
 `
 

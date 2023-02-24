@@ -7,7 +7,8 @@ import {Error} from '../../common/components/error';
 import {Loader} from '../../common/components/loader';
 import {useAppDispatch, useAppSelector} from '../../common/hooks/hooks';
 import {getCardTC} from '../book-card/api/book-card-reducer';
-import {BookWrapper} from "./style";
+
+import {BookWrapper} from './style';
 
 
 export const BooksPage = () => {
