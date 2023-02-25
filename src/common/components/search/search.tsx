@@ -3,13 +3,19 @@ import React, {ChangeEvent, FC, useState} from 'react';
 import {BtnColumn} from './assets/btn-column';
 import filterMobile from './assets/filter-mobile.svg';
 import {BtnList} from './assets/btn-list';
-import {SearchIcon} from './assets/search-icon';
 import searchMobile from './assets/search-mobile.svg';
 import searchClose from './assets/searchClose.svg';
 import sortDown from './assets/sortDown.svg';
-import {SearchBlock, SearchIconMobile, SearchWrapper, SortBlock, ViewBlock} from './style';
+import {
+    SearchBlock,
+    SearchIconMobile,
+    SearchWrapper,
+    SortBlock,
+    ViewBlock
+} from './style';
 import {useAppDispatch, useAppSelector} from "../../hooks/hooks";
 import {setSearchBookAC, setSortDownAC} from "../../../pages/book-page/api/book-page-reducer";
+import {SearchIcon} from "./assets/search-icon";
 
 
 type SearchPropsType = {
@@ -41,17 +47,13 @@ export const Search: FC<SearchPropsType> = ({onClick, view}) => {
     return (
         <SearchWrapper openSearch={openSearchInput}>
             <SearchBlock openSearch={openSearchInput}>
-                <SearchIcon
-                    onClick={onClickOpenSearchHandler}
-                    openSearch={openSearchInput}
-                />
                 <input value={inputSearchValue}
                        onChange={onChangeSearchHandler}
                        type="text"
                        placeholder="Поиск книги или автора…"
-                       onClick={onClickOpenSearchHandler}
                        data-test-id='input-search'
                 />
+                <SearchIcon/>
                 <button type="button" onClick={onClickCloseSearchHandler}>
                     <img src={searchClose}
                          data-test-id='button-search-close'
@@ -60,7 +62,9 @@ export const Search: FC<SearchPropsType> = ({onClick, view}) => {
             </SearchBlock>
             <div>
                 <SortBlock sort={sort}>
-                    <button data-test-id='sort-rating-button' onClick={onClickSortHandler} type="submit">По рейтингу</button>
+                    <button data-test-id='sort-rating-button' onClick={onClickSortHandler}
+                            type="submit">По рейтингу
+                    </button>
                     <img src={sortDown} alt="sortDown"/>
                 </SortBlock>
                 <SearchIconMobile

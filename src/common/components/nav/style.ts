@@ -84,9 +84,10 @@ export const BurgerMenuWrapper = styled.nav.attrs({
 
     a {
         transition: all 0.3s;
-        font-size: 18px;
-        line-height: 28px;
+        font-size: 16px;
+        line-height: 24px;
         letter-spacing: 0.1px;
+        color: #363636;
 
         :hover {
             background: linear-gradient(231.58deg, #F83600 -53.35%, #F9D423 297.76%);
@@ -185,9 +186,10 @@ export const NavigateMenuWrapper = styled.nav.attrs({
 
     a {
         transition: all 0.3s;
-        font-size: 18px;
-        line-height: 28px;
+        font-size: 16px;
+        line-height: 24px;
         letter-spacing: 0.1px;
+        color: #363636;
 
         :hover {
             background: linear-gradient(231.58deg, #F83600 -53.35%, #F9D423 297.76%);
@@ -228,7 +230,14 @@ export const MenuItem = styled.li`
         letter-spacing: 0.1px;
         color: #363636;
 
-        span {
+
+        span:nth-child(1) {
+            font-size: 16px;
+            line-height: 24px;
+            letter-spacing: 0.1px;
+            color: #363636;
+        }
+        span:nth-child(2) {
             padding-left: 5px;
             font-size: 14px;
             line-height: 24px;

@@ -21,7 +21,7 @@ type NavMenuPropsType = {
     isBurgerMenu: boolean
 }
 
-export const NavMenu: FC<NavMenuPropsType> = ({isBurgerMenu}) => {
+export const  NavMenu: FC<NavMenuPropsType> = ({isBurgerMenu}) => {
     const dispatch = useAppDispatch();
 
     const isMenuOpen = useAppSelector(state => state.app.isMenuOpen);
@@ -74,7 +74,9 @@ export const NavMenu: FC<NavMenuPropsType> = ({isBurgerMenu}) => {
                             <NavLink to={`books/${link.path}`}
                                      onClick={onClickCloseHandler}>
                                 <span
-                                    data-test-id={isBurgerMenu ? `burger-${link.path}` : `navigation-${link.path}`}>{link.name}</span>
+                                    data-test-id={isBurgerMenu ? `burger-${link.path}` : `navigation-${link.path}`}>
+                                    {link.name}
+                                </span>
                                 <span
                                     data-test-id={isBurgerMenu ? `burger-book-count-for-${link.path}` : `navigation-book-count-for-${link.path}`}
                                 >{numberOfBooks(link.name)}</span>

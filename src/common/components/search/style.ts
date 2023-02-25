@@ -17,7 +17,6 @@ export const SearchWrapper = styled.div<SearchBlockPropsType>`
     div:nth-child(2) {
         @media (max-width: 590px) {
             display: ${({openSearch}) => openSearch ? 'flex' : 'none'};
-
         }
 
         transition: all 0.3s;
@@ -28,6 +27,7 @@ export const SearchWrapper = styled.div<SearchBlockPropsType>`
 type SearchBlockPropsType = {
     openSearch: boolean
 }
+
 export const SearchBlock = styled.div<SearchBlockPropsType>`
     position: relative;
     display: flex;
@@ -40,12 +40,9 @@ export const SearchBlock = styled.div<SearchBlockPropsType>`
 
     button {
         display: none;
-        //opacity: 0;
-       // visibility: hidden;
         @media (max-width: 590px) {
             display: block;
             opacity: ${({openSearch}) => openSearch ? '0' : '1'};
-          //  visibility: visible;
             width: 16px;
             position: absolute;
             right: 16px;
@@ -58,7 +55,6 @@ export const SearchBlock = styled.div<SearchBlockPropsType>`
 
     }
 
-
     input {
         max-width: 350px;
         max-height: 36px;
@@ -68,10 +64,9 @@ export const SearchBlock = styled.div<SearchBlockPropsType>`
         overflow: hidden;
         border: none;
         caret-color: #F83600;
-        transition: all 0.3s;
+       // transition: all 0.3s;
         @media (max-width: 590px) {
             max-width: ${({openSearch}) => openSearch ? '45px' : '100%'};
-            //max-width: 45px;
             padding: ${({openSearch}) => openSearch ? '4px 22px' : '4px 40px'};
             display: ${({openSearch}) => !openSearch ? 'flex' : 'none'};
         }
@@ -81,7 +76,6 @@ export const SearchBlock = styled.div<SearchBlockPropsType>`
             line-height: 18px;
             color: #A7A7A7;
         }
-
     }
 
     svg {
@@ -92,12 +86,19 @@ export const SearchBlock = styled.div<SearchBlockPropsType>`
 
         @media (max-width: 590px) {
             display: ${({openSearch}) => !openSearch ? 'flex' : 'none'};
-         }
+        }
 
         path {
-            transition: fill 0.3s;
+            fill: ${({openSearch}) => openSearch ? '#A7A7A7' : '#F83600'};
         }
     }
+
+    input:focus ~ svg {
+        path {
+            fill: #F83600;
+        }
+    }
+
 `
 
 export const SearchIconMobile = styled.div<PropsImageType>`
