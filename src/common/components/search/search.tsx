@@ -1,14 +1,21 @@
 import React, {ChangeEvent, FC, useState} from 'react';
 
-import {BtnColumn} from '../../../assets/img/action/column';
-import filterMobile from '../../../assets/img/action/filter-mobile.svg';
-import {BtnList} from '../../../assets/img/action/list';
-import {SearchIcon} from '../../../assets/img/action/search-icon';
-import searchMobile from '../../../assets/img/action/search-mobile.svg';
-import searchClose from '../../../assets/img/action/searchClose.svg';
-import sortDown from '../../../assets/img/action/sortDown.svg';
-
-import {SearchBlock, SearchIconMobile, SearchWrapper, SortBlock, ViewBlock} from './style-seach';
+import {BtnColumn} from './assets/btn-column';
+import filterMobile from './assets/filter-mobile.svg';
+import {BtnList} from './assets/btn-list';
+import searchMobile from './assets/search-mobile.svg';
+import searchClose from './assets/searchClose.svg';
+import sortDown from './assets/sortDown.svg';
+import {
+    SearchBlock,
+    SearchIconMobile,
+    SearchWrapper,
+    SortBlock,
+    ViewBlock
+} from './style';
+import {useAppDispatch, useAppSelector} from "../../hooks/hooks";
+import {setSearchBookAC, setSortDownAC} from "../../../pages/book-page/api/book-page-reducer";
+import {SearchIcon} from "./assets/search-icon";
 
 
 type SearchPropsType = {
@@ -16,39 +23,48 @@ type SearchPropsType = {
     onClick: () => void
 }
 export const Search: FC<SearchPropsType> = ({onClick, view}) => {
-    const [value, setValue] = useState('')
-    const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        setValue(e.currentTarget.value)
-    }
-    const [openSearch, setOpenSearch] = useState(true)
+    const dispatch = useAppDispatch();
 
+    const sort = useAppSelector(state => state.books.sortDown)
+    const [openSearchInput, setOpenSearchInput] = useState(true)
+    const inputSearchValue = useAppSelector(state => state.books.searchBook)
+
+    const onChangeSearchHandler = (e: ChangeEvent<HTMLInputElement>) => {
+        const searchValue = e.currentTarget.value
+
+        dispatch(setSearchBookAC({searchValue}))
+    }
     const onClickOpenSearchHandler = () => {
-        setOpenSearch(false)
+        setOpenSearchInput(false)
     }
     const onClickCloseSearchHandler = () => {
-        setOpenSearch(!openSearch)
+        setOpenSearchInput(!openSearchInput)
+    }
+    const onClickSortHandler = () => {
+        dispatch(setSortDownAC())
     }
 
     return (
-        <SearchWrapper openSearch={openSearch}>
-            <SearchBlock openSearch={openSearch}>
-                <SearchIcon
-                    onClick={onClickOpenSearchHandler}/>
-                <input value={value}
-                       onChange={onChangeHandler}
+        <SearchWrapper openSearch={openSearchInput}>
+            <SearchBlock openSearch={openSearchInput}>
+                <input value={inputSearchValue}
+                       onChange={onChangeSearchHandler}
                        type="text"
                        placeholder="Поиск книги или автора…"
-                       onClick={onClickOpenSearchHandler}
                        data-test-id='input-search'
                 />
+                <SearchIcon/>
                 <button type="button" onClick={onClickCloseSearchHandler}>
                     <img src={searchClose}
-                         data-test-id='button-search-close' alt="searchClose"/>
+                         data-test-id='button-search-close'
+                         alt="searchClose"/>
                 </button>
             </SearchBlock>
             <div>
-                <SortBlock>
-                    <button type="submit">По рейтингу</button>
+                <SortBlock sort={sort}>
+                    <button data-test-id='sort-rating-button' onClick={onClickSortHandler}
+                            type="submit">По рейтингу
+                    </button>
                     <img src={sortDown} alt="sortDown"/>
                 </SortBlock>
                 <SearchIconMobile
@@ -66,7 +82,7 @@ export const Search: FC<SearchPropsType> = ({onClick, view}) => {
                 </SearchIconMobile>
 
             </div>
-            <ViewBlock openSearch={openSearch}
+            <ViewBlock openSearch={openSearchInput}
                        onClick={onClick}>
                 <BtnColumn isClick={view}/>
                 <BtnList isClick={view}/>

@@ -17,7 +17,6 @@ export const SearchWrapper = styled.div<SearchBlockPropsType>`
     div:nth-child(2) {
         @media (max-width: 590px) {
             display: ${({openSearch}) => openSearch ? 'flex' : 'none'};
-
         }
 
         transition: all 0.3s;
@@ -28,6 +27,7 @@ export const SearchWrapper = styled.div<SearchBlockPropsType>`
 type SearchBlockPropsType = {
     openSearch: boolean
 }
+
 export const SearchBlock = styled.div<SearchBlockPropsType>`
     position: relative;
     display: flex;
@@ -39,20 +39,21 @@ export const SearchBlock = styled.div<SearchBlockPropsType>`
     }
 
     button {
+        display: none;
         @media (max-width: 590px) {
-
+            display: block;
+            opacity: ${({openSearch}) => openSearch ? '0' : '1'};
+            width: 16px;
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            transition: opacity 0.3s;
+            z-index: 50;
         }
-        opacity: ${({openSearch}) => openSearch ? '0' : '1'};
-        width: 16px;
-        position: absolute;
-        right: 16px;
-        top: 50%;
-        transform: translateY(-50%);
-        cursor: pointer;
-        transition: opacity 0.3s;
-        z-index: 50;
-    }
 
+    }
 
     input {
         max-width: 350px;
@@ -63,10 +64,9 @@ export const SearchBlock = styled.div<SearchBlockPropsType>`
         overflow: hidden;
         border: none;
         caret-color: #F83600;
-        transition: all 0.3s;
+       // transition: all 0.3s;
         @media (max-width: 590px) {
             max-width: ${({openSearch}) => openSearch ? '45px' : '100%'};
-            //max-width: 45px;
             padding: ${({openSearch}) => openSearch ? '4px 22px' : '4px 40px'};
             display: ${({openSearch}) => !openSearch ? 'flex' : 'none'};
         }
@@ -86,19 +86,19 @@ export const SearchBlock = styled.div<SearchBlockPropsType>`
 
         @media (max-width: 590px) {
             display: ${({openSearch}) => !openSearch ? 'flex' : 'none'};
-         }
+        }
 
         path {
-            transition: fill 0.3s;
+            fill: ${({openSearch}) => openSearch ? '#A7A7A7' : '#F83600'};
         }
     }
-
 
     input:focus ~ svg {
         path {
             fill: #F83600;
         }
     }
+
 `
 
 export const SearchIconMobile = styled.div<PropsImageType>`
@@ -125,7 +125,10 @@ export const SearchIconMobile = styled.div<PropsImageType>`
         cursor: pointer;
     }
 `
-export const SortBlock = styled.div`
+type SortBlockPropsType = {
+    sort: boolean
+}
+export const SortBlock = styled.div<SortBlockPropsType>`
     position: relative;
     padding: 10px 16px 10px 40px;
     font-size: 14px;
@@ -145,8 +148,8 @@ export const SortBlock = styled.div`
         position: absolute;
         top: 50%;
         left: 16px;
-        transform: translateY(-50%);
-        // transform: scale(1, -1);
+        transition: all 0.3s;
+        transform: ${({sort}) => sort ? 'scale(1, -1) translateY(50%)' : 'translateY(-50%)'};
     }
 `
 

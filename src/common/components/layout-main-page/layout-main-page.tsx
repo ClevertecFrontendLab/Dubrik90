@@ -5,7 +5,7 @@ import {NavMenu} from '../nav/nav-menu';
 
 export const LayoutMainPage = () => (
     <React.Fragment>
-        <NavMenu/>
+        <NavMenu isBurgerMenu={false}/>
         <Outlet/>
     </React.Fragment>
 );

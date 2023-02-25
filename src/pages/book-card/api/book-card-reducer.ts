@@ -3,7 +3,8 @@ import {AxiosError} from 'axios';
 
 import {setAppStatusAC} from '../../../app/app-reducer';
 import {AppThunk} from '../../../app/store';
-import {booksAPI, CardResType, CardType} from '../../book-page/api/book-page-api';
+import {CardResType, CardType} from '../../../types/types';
+import {booksAPI} from '../../book-page/api/book-page-api';
 
 
 const initialState: CardType = {
@@ -62,6 +63,7 @@ export const getCardTC = (idBook?: string): AppThunk => async (dispatch) => {
     try {
         const id = idBook ? idBook : '';
         const res = await booksAPI.getCard(id)
+        
 
         dispatch(setCardAC(res.data))
         dispatch(setAppStatusAC({status: 'idle'}))
@@ -74,12 +76,3 @@ export const getCardTC = (idBook?: string): AppThunk => async (dispatch) => {
 
 export const cardReducer = slice.reducer
 
-type ErrorResType = {
-    data: null;
-    error: {
-        status: number;
-        name: string;
-        message: string;
-        details: object
-    }
-}

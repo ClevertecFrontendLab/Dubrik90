@@ -1,15 +1,27 @@
-import React, {useState} from 'react';
+import React, {FC, useState} from 'react';
 import {NavLink, useLocation} from 'react-router-dom';
 
 import {setIsMenuOpenAC} from '../../../app/app-reducer';
-import iconArrow from '../../../assets/img/action/Icon-arrow.svg'
+import iconArrow from './assets/icon-arrow.svg'
 import {useAppDispatch, useAppSelector} from '../../hooks/hooks';
 import {useBodyScrollLock} from '../../hooks/use-body-scroll-lock';
 
-import {MenuItem, MenuList, StyledNavMenu} from './style-nav';
-import {ALL, RULES, TREATY} from "../../../app/routs";
+import {
+    BurgerMenuAll,
+    BurgerMenuWrapper,
+    MenuItem,
+    MenuList,
+    NavigateMenuAll,
+    NavigateMenuWrapper
+} from './style';
+import {ROUTS} from '../../../constans/routs';
+import {CategoriesType} from '../../../types/types';
 
-export const NavMenu = () => {
+type NavMenuPropsType = {
+    isBurgerMenu: boolean
+}
+
+export const  NavMenu: FC<NavMenuPropsType> = ({isBurgerMenu}) => {
     const dispatch = useAppDispatch();
 
     const isMenuOpen = useAppSelector(state => state.app.isMenuOpen);
@@ -18,56 +30,68 @@ export const NavMenu = () => {
     const categories = useAppSelector(state => state.books.categories);
     const isActiveLink = useLocation().pathname.includes('books');
     const statusLoading = useAppSelector(state => state.app.status);
-
+    const books = useAppSelector(state => state.books.books);
+    const numberOfBooks = (category: string) => books?.filter((el) => el.categories.includes(category)).length;
     const onClickHandler = () => {
         setIsMenuListOpen(!isMenuListOpen);
     }
 
     const onClickCloseHandler = () => {
         dispatch(setIsMenuOpenAC({value: false}));
-        setIsMenuListOpen(false);
+        if (isBurgerMenu) {
+            setIsMenuListOpen(false);
+        }
     }
 
+    const WrapperMenu = isBurgerMenu ? BurgerMenuWrapper : NavigateMenuWrapper
+    const AllBooksWrapper = isBurgerMenu ? BurgerMenuAll : NavigateMenuAll
+
     return (
-        <StyledNavMenu data-test-id='burger-navigation' isMenuOpen={isMenuOpen}
-                       isMenuListOpen={isMenuListOpen} onClick={e => e.stopPropagation()}>
+        <WrapperMenu
+            isMenuOpen={isMenuOpen}
+            isMenuListOpen={isMenuListOpen}
+            onClick={e => e.stopPropagation()}>
             <div>
-                <NavLink className={isActiveLink ? 'active' : ''}
-                         onClick={onClickHandler}
-                         data-test-id='navigation-showcase'
-                         to={ALL}>Витрина книг
+                <AllBooksWrapper className={isActiveLink ? 'active' : ''}>
+                    Витрина книг
                     <button onClick={onClickHandler} type='button'>
                         <img src={iconArrow} alt="arrow"/>
                     </button>
-                </NavLink>
+                </AllBooksWrapper>
             </div>
-            <MenuList isMenuListOpen={isMenuListOpen}>
+            <MenuList isMenuListOpen={isMenuListOpen} onClick={e => e.stopPropagation()}>
                 {statusLoading === 'idle'
                     &&
-                    <NavLink data-test-id='navigation-books'
-                             to={ALL}
+                    <NavLink data-test-id={isBurgerMenu ? 'burger-books' : 'navigation-books'}
+                             to={ROUTS.ALL}
                              onClick={onClickCloseHandler}>
                         Все книги
                     </NavLink>
                 }
                 {statusLoading === 'idle' &&
-                    categories.map(link => (
+                    categories.map((link: CategoriesType) => (
                         <MenuItem key={link.id}>
                             <NavLink to={`books/${link.path}`}
                                      onClick={onClickCloseHandler}>
-                                {link.name}
-                                <span>10</span>
+                                <span
+                                    data-test-id={isBurgerMenu ? `burger-${link.path}` : `navigation-${link.path}`}>
+                                    {link.name}
+                                </span>
+                                <span
+                                    data-test-id={isBurgerMenu ? `burger-book-count-for-${link.path}` : `navigation-book-count-for-${link.path}`}
+                                >{numberOfBooks(link.name)}</span>
                             </NavLink>
                         </MenuItem>
                     ))
                 }
             </MenuList>
             <div>
-                <NavLink data-test-id='navigation-terms'
-                         onClick={onClickCloseHandler} to={RULES}>Правила пользования</NavLink>
-                <NavLink data-test-id='navigation-contract'
-                         onClick={onClickCloseHandler} to={TREATY}>Договор оферты</NavLink>
+                <NavLink data-test-id={isBurgerMenu ? 'burger-terms' : 'navigation-terms'}
+                         onClick={onClickCloseHandler} to={ROUTS.RULES}>Правила
+                    пользования</NavLink>
+                <NavLink data-test-id={isBurgerMenu ? 'burger-contract' : 'navigation-contract'}
+                         onClick={onClickCloseHandler} to={ROUTS.TREATY}>Договор оферты</NavLink>
             </div>
-        </StyledNavMenu>
+        </WrapperMenu>
     )
 }

@@ -1,22 +1,27 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import {AxiosError} from 'axios';
 
 import {setAppStatusAC} from '../../../app/app-reducer';
 import {AppThunk} from '../../../app/store';
+import {BooksResType, CategoriesResType} from '../../../types/types';
 
-import {booksAPI, BooksResType, CategoriesResType} from './book-page-api';
+import {booksAPI} from './book-page-api';
+
 
 type InitialStateType = {
     initialize: boolean,
     categories: CategoriesResType
     books: BooksResType
+    sortDown: boolean
+    searchBook: string
 }
 
 const initialState: InitialStateType = {
     initialize: false,
     categories: [],
-    books: []
+    books: [],
+    sortDown: false,
+    searchBook: ''
 }
 
 
@@ -33,14 +38,20 @@ const slice = createSlice({
         setCategoriesAC(state, action: PayloadAction<CategoriesResType>) {
             return {...state, categories: [...action.payload]}
         },
+        setSortDownAC(state) {
+            return {...state, sortDown: !state.sortDown}
+        },
+        setSearchBookAC(state,action: PayloadAction<{ searchValue: string }>) {
+            return {...state, searchBook: action.payload.searchValue}
+        }
     }
 })
 
 export const booksReducer = slice.reducer
-export const {setBooksAC, setInitializeAC, setCategoriesAC} = slice.actions
+export const {setBooksAC, setInitializeAC, setCategoriesAC, setSortDownAC, setSearchBookAC} = slice.actions
 
 export const getCategoriesTC = (): AppThunk => async (dispatch) => {
-   // dispatch(setAppStatusAC({status: 'loading'}))
+    // dispatch(setAppStatusAC({status: 'loading'}))
     try {
         const res = await booksAPI.getCategories()
 

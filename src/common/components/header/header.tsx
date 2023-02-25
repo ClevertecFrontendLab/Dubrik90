@@ -2,12 +2,11 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 
 import {setIsMenuOpenAC} from '../../../app/app-reducer';
-import avatar from '../../../assets/img/avatar.png';
-import logo from '../../../assets/img/logo.svg';
+import avatar from './assets/avatar.png';
+import logo from './assets/logo.svg';
 import {Burger} from '../../../styled/menu-burger/style-burger';
 import {Container} from '../../../styled/styled-wpapper';
 import {useAppDispatch, useAppSelector} from '../../hooks/hooks';
-import {BurgerMenu} from '../burger-menu/burger-menu';
 
 import {
     HeaderContent,
@@ -17,8 +16,9 @@ import {
     HeaderTitle,
     HeaderWrapper,
     ProfileName
-} from './header-style';
-import {HOME} from "../../../app/routs";
+} from './style';
+import {ROUTS} from "../../../constans/routs";
+import {NavMenu} from "../nav";
 
 export const Header = () => {
     const dispatch = useAppDispatch();
@@ -37,9 +37,11 @@ export const Header = () => {
         <HeaderWrapper>
             <Container>
                 <HeaderContent onClick={onClickCloseBurger}>
-                    <BurgerMenu/>
+                    <NavMenu
+                        isBurgerMenu={true}
+                    />
                     <HeaderImageLogo width="170px" height="40px" borderRadius="0">
-                        <Link to={HOME}>
+                        <Link to={ROUTS.HOME}>
                             <img src={logo}
                                  alt="Logo"/>
                         </Link>
@@ -51,7 +53,7 @@ export const Header = () => {
                     <HeaderProfile>
                         <ProfileName>Привет, Иван!</ProfileName>
                         <HeaderImageProfile width="58px" height="58px">
-                            <Link to={HOME}>
+                            <Link to={ROUTS.HOME}>
                                 <img src={avatar}
                                      alt="avatar"/>
                             </Link>
