@@ -1,0 +1,34 @@
+#root {
+  position: relative;
+
+  overflow: hidden;
+  display: flex;
+ // justify-content: center;
+  font-family: var(--font-family);
+ // min-height: 100vh;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.main {
+  position: relative;
+  flex: 1 1 auto;
+}
+
+.container {
+  box-sizing: content-box;
+  max-width: 1440px;
+  padding: 0 15px;
+}
+
+.wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+}
+
