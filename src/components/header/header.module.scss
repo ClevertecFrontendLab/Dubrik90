@@ -1,0 +1,79 @@
+.wrapper {
+    background: var(--primary-light-1);
+    padding: 16px 24px;
+}
+
+.bread__crumbs {
+    font-size: 0.88rem;
+    line-height: 130%;
+    color: var(--character-light-title-85);
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
+    column-gap: 5px;
+}
+
+.title {
+    all: unset;
+    font-weight: 700;
+    font-size: 2.38rem;
+    line-height: 130%;
+    color: var(--character-light-title-85);
+
+    @media (max-width: 1050.98px) {
+        font-size: 1.8rem;
+    }
+
+    @media (max-width: 834.98px) {
+        font-weight: 500;
+        font-size: 1.5rem;
+
+        &[class*='collapsed'] {
+            span {
+                display: block;
+            }
+        }
+    }
+
+    @media (max-width: 360.98px) {
+        font-size: 1.25rem;
+    }
+}
+
+.settings {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    align-self: flex-start;
+    column-gap: 10px;
+    flex-wrap: nowrap;
+    padding: 9px 15px;
+    cursor: pointer;
+    transition: all 0.3s;
+    background: transparent;
+
+    @media (max-width: 360.98px) {
+        border: 1px solid var(--character-light-border);
+        border-radius: 6.25rem;
+        box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.04);
+        background: var(--character-light-primary-inverse);
+        width: 2rem;
+        height: 2rem;
+        align-items: center;
+
+        span:last-child {
+            display: none;
+        }
+    }
+
+    @media (any-hover: hover) {
+        &:hover {
+            background: var(--primary-light-7);
+            color: var(--character-light-primary-inverse);
+
+        }
+    }
+
+}

@@ -6,21 +6,19 @@ import {
     ExitIcon,
     LogoDesktopIcon,
     LogoMinIcon,
-    SubstrateButtonIcon,
     LogoMobileIcon,
+    SubstrateButtonIcon,
 } from '../../assets';
 import s from './sidebar.module.scss';
-import { useState } from 'react';
 import * as classNames from 'classnames';
 import { Link } from 'react-router-dom';
 
-export const Sidebar = () => {
-    const [collapsed, setCollapsed] = useState(false);
+type SidebarProps = {
+    collapsed: boolean;
+    collapsedHandler: () => void;
+};
 
-    const collapsedHandler = () => {
-        setCollapsed(!collapsed);
-    };
-
+export const Sidebar = ({ collapsed, collapsedHandler }: SidebarProps) => {
     return (
         <div className={classNames(s.wrapper, { collapsed: collapsed })}>
             <Link className={s.logo} to={'/'}>
