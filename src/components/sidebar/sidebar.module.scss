@@ -1,0 +1,89 @@
+.wrapper {
+    width: 210px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: width 0.2s;
+
+    &[class*='collapsed'] {
+        width: 64px;
+    }
+}
+.logo {
+    display: flex;
+    margin-bottom: 70px;
+    margin-top: 50px;
+    justify-content: center;
+}
+
+
+.button {
+    all: unset;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    column-gap: 25px;
+    border-radius: 2px;
+
+    box-shadow: inset 0 1px 0 0 var(--character-light-dividers);
+    background: var(--character-light-primary-inverse);
+    transition: background 0.3s ;
+
+    [class*='collapsed'] & {
+        padding: 11px  15px 11px 0;
+        justify-content: center;
+    }
+
+    span {
+        padding: 11px  15px 11px 0;
+        font-size: 14px;
+        line-height: 130%;
+        color: var(--character-light-title-85);
+        justify-content: flex-start;
+
+
+        [class*='collapsed'] & {
+            display: none;
+        }
+    }
+
+
+
+    &:hover {
+        box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.04);
+        background: var(--primary-light-6);
+
+        span {
+            color: var(--character-light-primary-inverse)
+        }
+        svg {
+            path {
+                fill: var(--character-light-primary-inverse);
+            }
+        }
+    }
+
+}
+
+.collapsed__button {
+    all: unset;
+    cursor: pointer;
+    width: auto;
+    position: absolute;
+    right: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+
+    &:hover {
+     //   background: var(--primary-light-6);
+
+
+        svg {
+            path:last-child {
+                fill: var(--primary-light-6);
+            }
+        }
+    }
+
+}

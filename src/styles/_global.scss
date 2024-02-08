@@ -5,13 +5,19 @@
   display: flex;
  // justify-content: center;
   font-family: var(--font-family);
- // min-height: 100vh;
+  min-height: 100vh;
 }
 
 * {
     margin: 0;
     padding: 0;
     border: 0;
+}
+.content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background: url('../assets/image/main-page_light.png') 50% 50%/cover no-repeat;
 }
 
 .main {

@@ -1,7 +1,8 @@
 .menu__body {
+    flex: 1 1 auto;
 
     .menu__list {
-        list-style-type:  none;
+        list-style-type: none;
         display: flex;
         flex-direction: column;
         row-gap: 16px;
@@ -11,7 +12,6 @@
         padding: 12px 10px 12px 0;
 
 
-
     }
 
     .menu__link {
@@ -19,6 +19,11 @@
         align-items: center;
         column-gap: 10px;
         text-decoration: none;
+        transition: all 0.3s;
+
+        [class*='collapsed'] & {
+           justify-content: center;
+        }
 
         span {
             font-weight: 400;
@@ -26,14 +31,36 @@
             line-height: 130%;
             color: var(--character-light-title-85);
 
+
+            &[class*='collapsed'] {
+              display: none;
+            }
+
+        }
+
+        .icon {
+            width: 14px;
+            height: 14px;
+
+            [class*='collapsed'] & {
+                width: 16px;
+                height: 16px;
+            }
         }
 
         &[class*='active'] {
             span {
                 color: var(--primary-light-7);
             }
+        }
 
-         }
+        @media (any-hover: hover) {
+            &:hover {
+                span {
+                    color: var(--primary-light-7);
+                }
+            }
+        }
     }
 }
 
