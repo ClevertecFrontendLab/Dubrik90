@@ -1,6 +1,14 @@
 import { Menu } from '@components/menu';
 import { Button } from 'antd';
-import { CollapsedIcon, ExitIcon, LogoDesktopIcon, LogoMobileIcon } from '../../assets';
+import {
+    CollapsedCloseIcon,
+    CollapsedOpenIcon,
+    ExitIcon,
+    LogoDesktopIcon,
+    LogoMinIcon,
+    SubstrateButtonIcon,
+    LogoMobileIcon,
+} from '../../assets';
 import s from './sidebar.module.scss';
 import { useState } from 'react';
 import * as classNames from 'classnames';
@@ -16,18 +24,25 @@ export const Sidebar = () => {
     return (
         <div className={classNames(s.wrapper, { collapsed: collapsed })}>
             <Link className={s.logo} to={'/'}>
-                {collapsed ? <LogoMobileIcon /> : <LogoDesktopIcon />}
+                {collapsed ? (
+                    <LogoMinIcon className={s.logo__desktop} />
+                ) : (
+                    <LogoDesktopIcon className={s.logo__desktop} />
+                )}
+                <LogoMobileIcon className={s.logo__mobile} />
             </Link>
-
             <Menu collapsed={collapsed} />
             <Button className={s.button} icon={<ExitIcon />}>
                 Выход
             </Button>
-            <Button
-                onClick={collapsedHandler}
-                className={s.collapsed__button}
-                icon={<CollapsedIcon />}
-            ></Button>
+            <Button onClick={collapsedHandler} className={s.collapsed__button}>
+                <SubstrateButtonIcon />
+                {collapsed ? (
+                    <CollapsedOpenIcon className={s.CollapsedOpenIcon} />
+                ) : (
+                    <CollapsedCloseIcon className={s.CollapsedOpenIcon} />
+                )}
+            </Button>
         </div>
     );
 };
