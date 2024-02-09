@@ -19,8 +19,10 @@ type SidebarProps = {
 };
 
 export const Sidebar = ({ collapsed, collapsedHandler }: SidebarProps) => {
+    const dataTest = window.innerWidth >= 834 ? 'sider-switch' : 'sider-switch-mobile';
+
     return (
-        <div className={classNames(s.wrapper, { collapsed: collapsed })}>
+        <div className={classNames(s.wrapper)}>
             <Link className={s.logo} to={'/'}>
                 {collapsed ? (
                     <LogoMinIcon className={s.logo__desktop} />
@@ -29,11 +31,15 @@ export const Sidebar = ({ collapsed, collapsedHandler }: SidebarProps) => {
                 )}
                 <LogoMobileIcon className={s.logo__mobile} />
             </Link>
-            <Menu collapsed={collapsed} />
+            <Menu />
             <Button className={s.button} icon={<ExitIcon />}>
                 Выход
             </Button>
-            <Button onClick={collapsedHandler} className={s.collapsed__button}>
+            <Button
+                data-test-id={dataTest}
+                onClick={collapsedHandler}
+                className={s.collapsed__button}
+            >
                 <SubstrateButtonIcon />
                 {collapsed ? (
                     <CollapsedOpenIcon className={s.CollapsedOpenIcon} />

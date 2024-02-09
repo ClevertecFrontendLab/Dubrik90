@@ -1,10 +1,10 @@
 #root {
-  position: relative;
+    position: relative;
 
-  overflow: hidden;
-  display: flex;
-  font-family: var(--font-family);
-  min-height: 100vh;
+    //  overflow: hidden;
+    display: flex;
+    font-family: var(--font-family);
+    min-height: 100vh;
 }
 
 * {
@@ -12,22 +12,24 @@
     padding: 0;
     border: 0;
 }
+
 .content {
     display: flex;
     flex-direction: column;
     width: 100%;
     background: url('../assets/image/main-page_light.png') 50% 50%/cover no-repeat;
+
 }
 
 .main {
-  position: relative;
-  flex: 1 1 auto;
+    position: relative;
+    flex: 1 1 auto;
 }
 
 .container {
-  box-sizing: content-box;
-  max-width: 1440px;
-  padding: 0 15px;
+    box-sizing: content-box;
+    max-width: 1440px;
+   // padding-left: 15px;
 }
 
 .wrapper {

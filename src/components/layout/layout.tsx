@@ -13,7 +13,7 @@ export const Layout = () => {
     };
 
     return (
-        <div className={classNames('wrapper', 'container')}>
+        <div className={classNames('wrapper', 'container', { collapsed: collapsed })}>
             <Sidebar collapsed={collapsed} collapsedHandler={collapsedHandler} />
             <div className={'content'}>
                 <Header collapsed={collapsed} />

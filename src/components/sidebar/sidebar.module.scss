@@ -1,28 +1,28 @@
 .wrapper {
-    width: 210px;
+    width: 205px;
     display: flex;
     flex-direction: column;
     position: relative;
     transition: width 0.2s;
 
-    &[class*='collapsed'] {
+    [class*='collapsed'] & {
         width: 64px;
 
-        @media (max-width: 360.98px) {
+        @media (max-width: 794.98px) {
             width: 0;
+            left: -15px;
         }
     }
 
-    @media (max-width: 360.98px) {
+    @media (max-width: 794.98px) {
         position: absolute;
         top: 0;
         left: 0;
         z-index: 500;
-        height: 100%;
+        height: 100vh;
         background: var(--character-light-primary-inverse);
         padding-left: 15px;
     }
-
 }
 
 .logo {
@@ -60,7 +60,7 @@
     transition: background 0.3s;
 
     [class*='collapsed'] & {
-        padding: 11px 15px 11px 0;
+        padding: 11px 0 11px 0;
         justify-content: center;
     }
 
@@ -91,6 +91,19 @@
         }
     }
 
+    @media (max-width: 794.98px) {
+        &[class*='collapsed'] & {
+            width: 0;
+            padding: 0;
+        }
+    }
+
+    @media (max-width: 360.98px) {
+        svg {
+           display: none;
+        }
+        justify-content: center;
+    }
 }
 
 .collapsed__button {

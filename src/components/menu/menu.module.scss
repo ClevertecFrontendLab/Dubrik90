@@ -1,5 +1,10 @@
 .menu__body {
     flex: 1 1 auto;
+    padding-left: 15px;
+
+    [class*='collapsed'] & {
+        padding-left: 0;
+    }
 
     .menu__list {
         list-style-type: none;
@@ -10,6 +15,10 @@
 
     .menu__item {
         padding: 12px 10px 12px 0;
+
+        [class*='collapsed'] & {
+            padding: 12px 0 12px 0;
+        }
     }
 
     .menu__link {
@@ -29,7 +38,7 @@
             line-height: 130%;
             color: var(--character-light-title-85);
 
-            &[class*='collapsed'] {
+            [class*='collapsed'] & {
                 display: none;
             }
 
@@ -39,7 +48,7 @@
             width: 14px;
             height: 14px;
 
-            [class*='collapsed'] & {
+            &[class*='collapsed'] & {
                 width: 16px;
                 height: 16px;
             }

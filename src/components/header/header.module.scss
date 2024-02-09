@@ -7,6 +7,7 @@
     font-size: 0.88rem;
     line-height: 130%;
     color: var(--character-light-title-85);
+    margin-bottom: 10px;
 }
 
 .content {
@@ -37,7 +38,7 @@
         }
     }
 
-    @media (max-width: 360.98px) {
+    @media (max-width: 525.98px) {
         font-size: 1.25rem;
     }
 }
@@ -54,7 +55,7 @@
     transition: all 0.3s;
     background: transparent;
 
-    @media (max-width: 360.98px) {
+    @media (max-width: 475.98px) {
         border: 1px solid var(--character-light-border);
         border-radius: 6.25rem;
         box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.04);

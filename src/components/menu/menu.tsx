@@ -1,7 +1,6 @@
 import s from './menu.module.scss';
 import { NavLink } from 'react-router-dom';
 import { CalendarIcon, HeartIcon, ProfileIcon, TrophyIcon } from '../../assets/icons';
-import * as classNames from 'classnames';
 
 const menuLinks = [
     {
@@ -14,10 +13,7 @@ const menuLinks = [
     { name: 'Профиль', path: '/profile', icon: <ProfileIcon className={s.icon} /> },
 ];
 
-type MenuProps = {
-    collapsed: boolean;
-};
-export const Menu = ({ collapsed }: MenuProps) => {
+export const Menu = () => {
     return (
         <nav className={s.menu__body}>
             <ul className={s.menu__list}>
@@ -25,9 +21,7 @@ export const Menu = ({ collapsed }: MenuProps) => {
                     <li className={s.menu__item} key={link.name}>
                         <NavLink className={s.menu__link} to={link.path}>
                             {link.icon}
-                            <span className={classNames({ collapsed: collapsed })}>
-                                {link.name}
-                            </span>
+                            <span>{link.name}</span>
                         </NavLink>
                     </li>
                 ))}
