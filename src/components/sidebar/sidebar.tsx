@@ -12,6 +12,7 @@ import {
 import s from './sidebar.module.scss';
 import * as classNames from 'classnames';
 import { Link } from 'react-router-dom';
+import { Routs } from '../../router/routTypes.ts';
 
 type SidebarProps = {
     collapsed: boolean;
@@ -23,7 +24,7 @@ export const Sidebar = ({ collapsed, collapsedHandler }: SidebarProps) => {
 
     return (
         <div className={classNames(s.wrapper)}>
-            <Link className={s.logo} to={'/'}>
+            <Link className={s.logo} to={Routs.MAIN}>
                 {collapsed ? (
                     <LogoMinIcon className={s.logo__desktop} />
                 ) : (
