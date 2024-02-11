@@ -41,7 +41,7 @@ export const Sidebar = ({ collapsed, collapsedHandler }: SidebarProps) => {
                 onClick={collapsedHandler}
                 className={s.collapsed__button}
             >
-                <SubstrateButtonIcon />
+                <SubstrateButtonIcon className={s.SubstrateButtonIcon} />
                 {collapsed ? (
                     <CollapsedOpenIcon className={s.CollapsedOpenIcon} />
                 ) : (

@@ -55,6 +55,9 @@
         .icon {
             width: 16px;
             height: 16px;
+            path {
+                fill: var(--primary-light-9);
+            }
 
             &[class*='collapsed'] & {
                 width: 16px;

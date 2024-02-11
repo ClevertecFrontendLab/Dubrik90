@@ -115,7 +115,6 @@
 .collapsed__button {
     all: unset;
     cursor: pointer;
-    width: auto;
     position: absolute;
     right: -20px;
     top: 50%;
@@ -123,8 +122,17 @@
     z-index: 10;
 
     @media (max-width: 360.98px) {
-        top: 30px;
+        .SubstrateButtonIcon {
+            display: none;
+        }
+        right: -32px;
+        top: 24px;
         transform: translateY(0);
+        width: 32px;
+        height: 48px;
+        background-color: var(--character-light-primary-inverse);
+        clip-path: polygon(0 0, 100% 22%, 100% 84%, 0% 100%);
+
     }
 
     .CollapsedOpenIcon {
