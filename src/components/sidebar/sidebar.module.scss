@@ -4,6 +4,7 @@
     flex-direction: column;
     position: relative;
     transition: width 0.2s;
+    background-color: var(--character-light-sider-background);
 
     [class*='collapsed'] & {
         width: 70px;

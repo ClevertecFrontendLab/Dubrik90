@@ -1,7 +1,7 @@
 import s from './footer.module.scss';
 import { Link } from 'react-router-dom';
 import { Button } from 'antd';
-import { AndroidOutlined, AppleOutlined } from '@ant-design/icons';
+import { AndroidFilled, AppleFilled } from '@ant-design/icons';
 
 export const Footer = () => (
     <footer className={s.footer}>
@@ -14,10 +14,10 @@ export const Footer = () => (
                 <p className={s.text}>Доступно в PRO-тарифе</p>
             </div>
             <div className={s.download__btn_block}>
-                <Button className={s.download__btn} icon={<AndroidOutlined />}>
+                <Button className={s.download__btn} icon={<AndroidFilled />}>
                     Android OS
                 </Button>
-                <Button className={s.download__btn} icon={<AppleOutlined />}>
+                <Button className={s.download__btn} icon={<AppleFilled />}>
                     Apple iOS
                 </Button>
             </div>
