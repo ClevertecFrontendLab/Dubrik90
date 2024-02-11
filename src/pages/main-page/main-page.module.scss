@@ -74,14 +74,22 @@
     color: var(--character-light-title-85);
 
     @media (max-width: 1160.98px) {
+        padding: 13px 28px;
+        align-self: flex-start;
         span {
             display: block;
         }
-
         [class*='collapsed'] & {
             span {
                 display: inline-block;
             }
+        }
+    }
+    @media (max-width: 360.98px) {
+        align-self: center;
+        padding: 12px 5px;
+        span {
+            display: inline-block;
         }
     }
 }
