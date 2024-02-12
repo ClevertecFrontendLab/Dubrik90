@@ -1,0 +1,38 @@
+#root {
+    position: relative;
+    display: flex;
+    font-family: var(--font-family);
+    min-height: 100vh;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.main {
+    position: relative;
+    flex: 1 1 auto;
+}
+
+.container {
+    box-sizing: content-box;
+    max-width: 1440px;
+}
+
+.wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    position: relative;
+    background: url('../assets/image/main-page_light.png') 50% 50%/cover no-repeat;
+}
+

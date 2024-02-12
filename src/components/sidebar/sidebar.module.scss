@@ -1,0 +1,156 @@
+.wrapper {
+    width: 205px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: width 0.2s;
+    background-color: var(--character-light-sider-background);
+
+    [class*='collapsed'] & {
+        width: 70px;
+
+        @media (max-width: 794.98px) {
+            width: 0;
+        }
+    }
+
+    @media (max-width: 794.98px) {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 500;
+        height: 100vh;
+        background: var(--character-light-primary-inverse);
+    }
+    @media (max-width: 360.98px) {
+        width: 106px;
+    }
+}
+
+.logo {
+    display: flex;
+    margin-bottom: 50px;
+    margin-top: 30px;
+    justify-content: center;
+
+    .logo__mobile {
+        display: none;
+    }
+
+    @media (max-width: 834.98px) {
+        [class*='collapsed'] & {
+            margin-top: 49px;
+            margin-bottom: 70px;
+        }
+    }
+    @media (max-width: 360.98px) {
+        margin-top: 16px;
+        margin-bottom: 30px;
+
+        .logo__desktop {
+            display: none;
+        }
+        .logo__mobile {
+            display: flex;
+        }
+    }
+}
+
+.button {
+    all: unset;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    column-gap: 25px;
+    border-radius: 2px;
+    padding-left: 15px;
+    box-shadow: inset 0 1px 0 0 var(--character-light-dividers);
+    background: var(--character-light-primary-inverse);
+    transition: background 0.3s;
+
+    [class*='collapsed'] & {
+        padding: 11px 0 11px 0;
+        justify-content: center;
+    }
+
+    span {
+        padding: 11px 15px 11px 0;
+        font-size: 14px;
+        line-height: 130%;
+        color: var(--character-light-title-85);
+        justify-content: flex-start;
+
+        [class*='collapsed'] & {
+            display: none;
+        }
+    }
+
+    &:hover {
+        box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.04);
+        background: var(--primary-light-6);
+
+        span {
+            color: var(--character-light-primary-inverse)
+        }
+
+        svg {
+            path {
+                fill: var(--character-light-primary-inverse);
+            }
+        }
+    }
+
+    @media (max-width: 794.98px) {
+        &[class*='collapsed'] & {
+            width: 0;
+            padding: 0;
+        }
+    }
+    @media (max-width: 360.98px) {
+        svg {
+            display: none;
+        }
+        justify-content: center;
+    }
+}
+
+.collapsed__button {
+    all: unset;
+    cursor: pointer;
+    position: absolute;
+    right: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+
+    @media (max-width: 360.98px) {
+        .SubstrateButtonIcon {
+            display: none;
+        }
+        right: -32px;
+        top: 24px;
+        transform: translateY(0);
+        width: 32px;
+        height: 48px;
+        background-color: var(--character-light-primary-inverse);
+        clip-path: polygon(0 0, 100% 22%, 100% 84%, 0% 100%);
+
+    }
+
+    .CollapsedOpenIcon {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 15;
+        transition: all 0.3s;
+    }
+
+    &:hover {
+        .CollapsedOpenIcon {
+            path:last-child {
+                fill: var(--primary-light-6);
+            }
+        }
+    }
+}

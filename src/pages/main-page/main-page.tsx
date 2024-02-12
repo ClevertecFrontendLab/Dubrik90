@@ -1,34 +1,33 @@
-import React, { useState } from 'react';
+import React from 'react';
+import s from './main-page.module.scss';
+import { Button } from 'antd';
+import { actionItems, listItems } from '@pages/main-page/data.tsx';
 
-import reactLogo from '/react.svg';
-import viteLogo from '/vite.svg';
-import tsLogo from '/ts.svg';
-import './main-page.css';
-
-export const MainPage: React.FC = () => {
-    const [count, setCount] = useState(0);
-
-    return (
-        <>
-            <div>
-                <a href='https://vitejs.dev' target='_blank'>
-                    <img src={viteLogo} className='logo' alt='Vite logo' />
-                </a>
-                <a href='https://react.dev' target='_blank'>
-                    <img src={reactLogo} className='logo react' alt='React logo' />
-                </a>
-                <a href='https://www.typescriptlang.org/' target='_blank'>
-                    <img src={tsLogo} className='logo' alt='TS logo' />
-                </a>
-            </div>
-            <h1>Vite + React + TS</h1>
-            <div className='card'>
-                <button onClick={() => setCount((count) => count + 1)}>count is {count}</button>
-                <p>
-                    Edit <code>src/pages/main-page.tsx</code> and save to test HMR
-                </p>
-            </div>
-            <p className='read-the-docs'>Click on the Vite and React logos to learn more</p>
-        </>
-    );
-};
+export const MainPage: React.FC = () => (
+    <div className={s.main}>
+        <ul className={s.scope__list}>
+            С CleverFit ты сможешь:
+            {listItems.map((item) => (
+                <li key={item.id} className={s.scope__item}>
+                    {item.text}
+                </li>
+            ))}
+        </ul>
+        <p className={s.about}>
+            CleverFit — это не просто приложение, а твой личный помощник в мире фитнеса.
+            Не откладывай на завтра — начни тренироваться уже сегодня!
+        </p>
+        <div className={s.action__wrapper}>
+            {actionItems.map((action) => (
+                <div key={action.id} className={s.action__block}>
+                    <p className={s.title}>
+                        {action.pText} <span>{action.sText}</span>
+                    </p>
+                    <Button icon={action.icon} className={s.variant__btn}>
+                        {action.btn}
+                    </Button>
+                </div>
+            ))}
+        </div>
+    </div>
+);
